@@ -3,6 +3,7 @@
 
 <head>
     <title>ClockJS</title>
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="index.css" />
 </head>
 
@@ -11,12 +12,22 @@
     <div class="js_clock">
         <h1>00:00</h1>
     </div>
+
     <form class="js_form form">
-        <input class="text" placeholder="What is your name?" />
+        <input type="text" placeholder="What is your name?" />
     </form>
     <h4 class="js_greetings greetings"></h4>
+
+    <form class="js_toDoForm">
+        <input type="text" id="todoInput" placeholder="What is your awesome plans today!?" />
+    </form>
+    <ul class="js_toDoList">
+
+    </ul>
+
     <script src="clock.js"></script>
     <script src="greeting.js"></script>
+    <script src="todo.js"></script>
 </body>
 
 </html>

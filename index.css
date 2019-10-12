@@ -6,3 +6,7 @@
 .showing {
     display: block;
 }
+
+#todoInput {
+    width: 182px;
+}
