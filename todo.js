@@ -5,10 +5,24 @@ const toDoForm = document.querySelector(".js_toDoForm"),
     toDoList = document.querySelector(".js_toDoList");
 
 const TODOS_LS = "toDos"
-const TODOSVALUE_LS = [];
+let TODOSVALUE_LS = [];
 
 function saveToDoList(text) {
     localStorage.setItem(TODOS_LS, JSON.stringify(text));
+}
+
+function delBtnFn(event) {
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    //여기까진 html li 지우기.
+    //filter로 클릭된 것을 지우는 배열을 만들어낸다.
+    const clearnToDo = TODOSVALUE_LS.filter(function (toDo) {
+        return toDo.id !== parseInt(li.id);
+    })
+    //만들어낸걸 다시 value에 저장한다. 그래야 위에께 다시 동작했을때 중복되지 않을테니까.
+    TODOSVALUE_LS = clearnToDo;
+    saveToDoList(TODOSVALUE_LS);
 }
 
 function paintToDo(text) {
@@ -18,6 +32,7 @@ function paintToDo(text) {
     const newId = TODOSVALUE_LS.length;
     span.innerText = text;
     delBtn.innerText = "❌"
+    delBtn.addEventListener("click", delBtnFn);
     li.id = newId
     li.appendChild(delBtn);
     li.appendChild(span);
